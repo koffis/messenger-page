@@ -1,16 +1,20 @@
 import React from 'react';
 import s from './Dialog.module.css'
-import {connect} from "react-redux";
 import DialogItem from "./DialogItem";
-import {AddMessage2, getChakMessage2, updateMessageText} from "../../Redux/dialogs-reducer";
+import Preloader from "../common/Preloader/Preloader";
 
-const Dialog2 = (props) => {
+const Dialog = (props) => {
+    if (!props.dialog) {
+        return (
+            <Preloader/>
+        );
+    }
 
-    let addNewMessage = () =>{
-        props.AddMessage2(1)
+    let addNewMessage = () => {
+        props.addMessage(1)
     };
 
-    let updateNewMessageText = (e) =>{
+    let updateNewMessageText = (e) => {
         let text = e.target.value;
         props.updateMessageText(text)
     };
@@ -32,20 +36,14 @@ const Dialog2 = (props) => {
                 {messagesList}
             </div>
             <div className={s.messagePlace}>
-                <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/><input onClick={()=>{
-                    addNewMessage();
-                    props.getChakMessage2();
-                }} type="submit"/>
+                <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/><input onClick={() => {
+                addNewMessage();
+                props.getChakMessage();
+            }} type="submit"/>
             </div>
         </div>
 
     );
 };
 
-const mapStateToProps = (state) =>({
-    dialog: state.dialogs.dialog2,
-    newMessageText: state.dialogs.newMessageText
-
-});
-
-export default connect(mapStateToProps,{AddMessage2, updateMessageText, getChakMessage2})(Dialog2);
+export default Dialog;

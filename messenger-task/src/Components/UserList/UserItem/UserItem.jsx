@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const UserItem = (props) => {
     return (
-        <NavLink to={`/dialog/${props.userId}`}>
+        <NavLink to={`/${props.userId}`}>
             <div className={s.users_wrapper}>
                 <div className={s.userAvatar}>
                     <img alt={"user avatar"} src={props.avatar}/>
