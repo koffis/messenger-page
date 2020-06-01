@@ -10,7 +10,6 @@ class DialogContainer extends React.Component {
     componentDidMount() {
         let id = this.props.match.params.id;
         if(!id) return <p>There no such user</p>;
-
         this.props.getDialog(id);
     }
 

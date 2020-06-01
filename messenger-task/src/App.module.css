@@ -1,14 +1,10 @@
 .app_wrapper{
     display: grid;
     grid-template-areas:
-                'search dialogs'
+                'users dialogs'
                 'users dialogs';
     grid-template-rows: 100px 1fr;
     grid-template-columns: 4fr 8fr;
-}
-
-.search{
-    grid-area: search;
 }
 
 .userList{
