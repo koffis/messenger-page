@@ -1,5 +1,4 @@
 import {dialogAPI, messageAPI} from "../api/api";
-import {changeLastMessage} from "./users-list-reducer";
 
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
@@ -19,7 +18,7 @@ const dialogsReducer = (state = initialState, action) => {
             };
         case ADD_MESSAGE:
             let now = new Date();
-            let currentTime = now.getMonth()+1+'/'+now.getDate()+'/'+now.getFullYear()+', '+now.getHours()+":"+ now.getMinutes()
+            let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
             let newMessage = {
                 text: state.newMessageText,
                 author: action.author,
@@ -50,15 +49,25 @@ export const updateMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, text
 export const addMessage = (author) => ({type: ADD_MESSAGE, author});
 export const setDialog = (payload) => ({type: SET_DIALOG, payload});
 
-export const getDialog = (id) => async (dispatch) =>{
+export const getDialog = (id) => async (dispatch) => {
     let response = await dialogAPI.getDialog(id);
     dispatch(setDialog(response.data.dialog))
 };
 
-export const getChakMessage = () => async (dispatch) =>{
+export const sendNewMessage = (id, message) => (dispatch) => {
+    messageAPI.sendMessage(id, message);
+};
+
+let now = new Date();
+let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
+
+export const getChakMessage = (id) => async (dispatch) => {
     let response = await messageAPI.getResponse();
-    dispatch(updateMessageText(response.data.value));
-    dispatch(addMessage(2));
+    dispatch(sendNewMessage(id, {
+        text: response.data.value,
+        author: 2,
+        time: currentTime
+    }));
 };
 
 export default dialogsReducer;
