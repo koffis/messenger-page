@@ -6,6 +6,7 @@ const SET_DIALOG = 'SET_DIALOG';
 let now = new Date();
 let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
 let currentDate = "Jun " + now.getDate() + ", " + now.getFullYear();
+let currentSeconds = now.getTime();
 
 let initialState = {
     dialog: null,
@@ -51,7 +52,7 @@ export const getChakMessage = (id) => async (dispatch) => {
         time: currentTime
     }));
     dispatch(getDialog(id));
-    dispatch(setLastMessage(id,response.data.value, currentDate));
+    dispatch(setLastMessage(id,response.data.value, currentDate, currentSeconds));
     dispatch(getUsers())
 };
 

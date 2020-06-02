@@ -12,7 +12,9 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: action.payload
+                users: action.payload.sort(function (first, second) {
+                    return second.time-first.time
+                })
             };
         case SET_LAST_MESSAGE:
             if (state.users[0].userId === action.id) {
@@ -33,8 +35,8 @@ export const getUsers = () => async (dispatch) =>{
     dispatch(setUsers(response.data.users))
 };
 
-export const setLastMessage = (id, message, date) => (dispatch) => {
-    userAPI.lastMessage(id, message, date).then(
+export const setLastMessage = (id, message, date, time) => (dispatch) => {
+    userAPI.lastMessage(id, message, date, time).then(
         dispatch(getUsers())
     )
 };

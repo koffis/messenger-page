@@ -28,12 +28,14 @@ def get_last():
     sender_id = new_message["id"]
     message = new_message["message"]
     date = new_message["date"]
+    time = new_message["time"]
     with open("users.json") as file:
         users_id = json.load(file)
     for user in users_id["users"]:
         if user["userId"] == sender_id:
             user["message"] = message
             user["date"] = date
+            user["time"] = time
             with open("users.json", "w") as file:
                 file.write(json.dumps(users_id))
             return {

@@ -22,11 +22,12 @@ export const userAPI = {
     getUsers(){
         return axios.get('http://127.0.0.1:5000/users')
     },
-    lastMessage(id, message, date){
+    lastMessage(id, message, date, time){
         return axios.post('http://127.0.0.1:5000/last', {
             id: id,
             message:message,
-            date: date
+            date: date,
+            time: time
         })
     }
 };
