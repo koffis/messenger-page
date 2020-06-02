@@ -3,6 +3,9 @@ import {dialogAPI, messageAPI} from "../api/api";
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const SET_DIALOG = 'SET_DIALOG';
+let now = new Date();
+let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
+
 
 let initialState = {
     dialog: null,
@@ -55,19 +58,18 @@ export const getDialog = (id) => async (dispatch) => {
 };
 
 export const sendNewMessage = (id, message) => (dispatch) => {
-    messageAPI.sendMessage(id, message);
+    messageAPI.sendMessage(id, message).then(
+        dispatch(getDialog(id))
+    );
+
 };
 
-let now = new Date();
-let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
-
-export const getChakMessage = (id) => async (dispatch) => {
-    let response = await messageAPI.getResponse();
-    dispatch(sendNewMessage(id, {
+export const getChakMessage = (id) => (dispatch) => {
+    messageAPI.getResponse().then(response => dispatch(sendNewMessage(id, {
         text: response.data.value,
         author: 2,
         time: currentTime
-    }));
+    }))).then(dispatch(getDialog(id)));
 };
 
 export default dialogsReducer;
