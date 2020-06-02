@@ -1,8 +1,12 @@
 import {dialogAPI, messageAPI} from "../api/api";
+import {getUsers, setLastMessage} from "./users-list-reducer";
 
-const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const SET_DIALOG = 'SET_DIALOG';
+let now = new Date();
+let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
+let currentDate = "Jun " + now.getDate() + ", " + now.getFullYear();
+let currentSeconds = now.getTime();
 
 let initialState = {
     dialog: null,
@@ -16,23 +20,6 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 dialog: action.payload
             };
-        case ADD_MESSAGE:
-            let newMessage = {
-                text: state.newMessageText,
-                author: action.author,
-                time: '5/27/20, 16:10'
-            };
-            return {
-                ...state,
-                dialog: {
-                    id: state.dialog.id,
-                    sender: state.dialog.sender,
-                    verified: state.dialog.verified,
-                    avatar: state.dialog.avatar,
-                    messages: [...state.dialog.messages, newMessage]
-                },
-                newMessageText: ''
-            };
         case UPDATE_NEW_MESSAGE_TEXT:
             return {
                 ...state,
@@ -44,18 +31,29 @@ const dialogsReducer = (state = initialState, action) => {
 };
 
 export const updateMessageText = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, text});
-export const addMessage = (author) => ({type: ADD_MESSAGE, author});
 export const setDialog = (payload) => ({type: SET_DIALOG, payload});
 
-export const getDialog = (id) => async (dispatch) =>{
+export const getDialog = (id) => async (dispatch) => {
     let response = await dialogAPI.getDialog(id);
     dispatch(setDialog(response.data.dialog))
 };
 
-export const getChakMessage = () => async (dispatch) =>{
+export const sendNewMessage = (id, message) => (dispatch) => {
+    messageAPI.sendMessage(id, message).then(
+        dispatch(getDialog(id))
+    );
+};
+
+export const getChakMessage = (id) => async (dispatch) => {
     let response = await messageAPI.getResponse();
-    dispatch(updateMessageText(response.data.value));
-    dispatch(addMessage(2))
+    dispatch(sendNewMessage(id, {
+        text: response.data.value,
+        author: 2,
+        time: currentTime
+    }));
+    dispatch(getDialog(id));
+    dispatch(setLastMessage(id,response.data.value, currentDate, currentSeconds));
+    dispatch(getUsers())
 };
 
 export default dialogsReducer;

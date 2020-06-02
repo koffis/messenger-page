@@ -1,31 +1,62 @@
 import React from 'react';
 import {connect} from "react-redux";
 import UserItem from "./UserItem/UserItem";
+import s from './UserList.module.css'
+import {getUsers} from "../../Redux/users-list-reducer";
 
-const UserList = (props) => {
 
-    const usersList = props.users.map(user => <UserItem
-        name={user.name}
-        verified={user.verified}
-        date={user.date}
-        avatar={user.avatar}
-        userId={user.userId}
-        message={user.message}
-    />);
+class UserList extends React.Component {
 
-    return (
-        <div>
-            <h4>Chats</h4>
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.users !== prevProps.users){
+            return this.props.users;
+        }
+    }
+
+
+    state = {
+        search: []
+    };
+
+    render() {
+        let options;
+        if (this.state.search.length) {
+            const searchPattern = new RegExp(this.state.search.map(term => `(?=.*${term})`).join(''), 'i');
+            options = this.props.users.filter(option =>
+                option.name.match(searchPattern)
+            );
+        } else {
+            options = this.props.users;
+        }
+
+        return (
             <div>
-                {usersList}
+                <div className={s.yourAvatar}>
+                    <img alt={'user avatar'}
+                         src={'https://p.kindpng.com/picc/s/65-653274_workers-compensation-law-social-security-disability-user-icon.png'}/>
+                </div>
+                <div>
+                    <input type="text" onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
+                    <ul>
+                        {options.map(user => <UserItem
+                            key={user.userId}
+                            name={user.name}
+                            verified={user.verified}
+                            date={user.date}
+                            avatar={user.avatar}
+                            userId={user.userId}
+                            message={user.message}
+                        />)}
+                    </ul>
+                </div>
             </div>
-        </div>
 
-    );
-};
+        );
+    }
+}
 
-const mapStateToProps = (state) =>({
+const mapStateToProps = (state) => ({
     users: state.users.users
 });
 
-export default connect(mapStateToProps,{})(UserList);
+export default connect(mapStateToProps, {getUsers})(UserList);

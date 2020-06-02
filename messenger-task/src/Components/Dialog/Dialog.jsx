@@ -10,8 +10,15 @@ const Dialog = (props) => {
         );
     }
 
+    let now = new Date();
+    let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
+
     let addNewMessage = () => {
-        props.addMessage(1)
+        props.sendNewMessage(props.dialog.id, {
+            text: props.newMessageText,
+            author: 1,
+            time: currentTime
+        })
     };
 
     let updateNewMessageText = (e) => {
@@ -38,11 +45,10 @@ const Dialog = (props) => {
             <div className={s.messagePlace}>
                 <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/><input onClick={() => {
                 addNewMessage();
-                props.getChakMessage();
+                props.getChakMessage(props.dialog.id)
             }} type="submit"/>
             </div>
         </div>
-
     );
 };
 
