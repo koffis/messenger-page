@@ -2,16 +2,17 @@ import React from 'react';
 import {connect} from "react-redux";
 import UserItem from "./UserItem/UserItem";
 import s from './UserList.module.css'
+import {getUsers} from "../../Redux/users-list-reducer";
 
 
 class UserList extends React.Component {
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.users !== prevProps.users){
-            return this.props.users
+            return this.props.users;
         }
     }
 
-    users = this.props.users;
 
     state = {
         search: []
@@ -21,11 +22,11 @@ class UserList extends React.Component {
         let options;
         if (this.state.search.length) {
             const searchPattern = new RegExp(this.state.search.map(term => `(?=.*${term})`).join(''), 'i');
-            options = this.users.filter(option =>
+            options = this.props.users.filter(option =>
                 option.name.match(searchPattern)
             );
         } else {
-            options = this.users;
+            options = this.props.users;
         }
 
         return (
@@ -58,4 +59,4 @@ const mapStateToProps = (state) => ({
     users: state.users.users
 });
 
-export default connect(mapStateToProps, {})(UserList);
+export default connect(mapStateToProps, {getUsers})(UserList);

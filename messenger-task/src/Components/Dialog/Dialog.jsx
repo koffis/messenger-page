@@ -45,7 +45,7 @@ const Dialog = (props) => {
             <div className={s.messagePlace}>
                 <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/><input onClick={() => {
                 addNewMessage();
-                props.getChakMessage(props.dialog.id);
+                props.getChakMessage(props.dialog.id)
             }} type="submit"/>
             </div>
         </div>

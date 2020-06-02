@@ -22,12 +22,30 @@ def get_users():
         return users
 
 
+@app.route("/last", methods=['POST'])
+def get_last():
+    new_message = request.get_json()
+    sender_id = new_message["id"]
+    message = new_message["message"]
+    date = new_message["date"]
+    with open("users.json") as file:
+        users_id = json.load(file)
+    for user in users_id["users"]:
+        if user["userId"] == sender_id:
+            user["message"] = message
+            user["date"] = date
+            with open("users.json", "w") as file:
+                file.write(json.dumps(users_id))
+            return {
+                "message": "Last message was changed successful"
+            }, 200
+
+
 @app.route("/send", methods=['POST'])
 def send_message():
     message_json = request.get_json()
     sender_id = message_json["id"]
     message = message_json["message"]
-    print(message)
     with open("dialogs.json") as file:
         dialogs_id = json.load(file)
     for dialog in dialogs_id["dialogs"]:

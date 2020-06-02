@@ -1,10 +1,11 @@
 import {dialogAPI, messageAPI} from "../api/api";
+import {getUsers, setLastMessage} from "./users-list-reducer";
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const SET_DIALOG = 'SET_DIALOG';
 let now = new Date();
 let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
-
+let currentDate = "Jun " + now.getDate() + ", " + now.getFullYear();
 
 let initialState = {
     dialog: null,
@@ -50,6 +51,8 @@ export const getChakMessage = (id) => async (dispatch) => {
         time: currentTime
     }));
     dispatch(getDialog(id));
+    dispatch(setLastMessage(id,response.data.value, currentDate));
+    dispatch(getUsers())
 };
 
 export default dialogsReducer;

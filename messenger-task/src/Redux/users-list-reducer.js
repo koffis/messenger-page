@@ -33,6 +33,12 @@ export const getUsers = () => async (dispatch) =>{
     dispatch(setUsers(response.data.users))
 };
 
+export const setLastMessage = (id, message, date) => (dispatch) => {
+    userAPI.lastMessage(id, message, date).then(
+        dispatch(getUsers())
+    )
+};
+
 export default usersReducer;
 
 
