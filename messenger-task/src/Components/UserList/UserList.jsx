@@ -21,14 +21,6 @@ class UserList extends React.Component {
         } else {
             options = this.users;
         }
-        const usersList = this.props.users.map(user => <UserItem
-            name={user.name}
-            verified={user.verified}
-            date={user.date}
-            avatar={user.avatar}
-            userId={user.userId}
-            message={user.message}
-        />);
 
         return (
             <div>
@@ -40,6 +32,7 @@ class UserList extends React.Component {
                     <input type="text" onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
                     <ul>
                         {options.map(user => <UserItem
+                            key={user.userId}
                             name={user.name}
                             verified={user.verified}
                             date={user.date}

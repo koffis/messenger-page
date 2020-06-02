@@ -34,6 +34,38 @@ let initialState = {
             userId: 4,
             message: 'Hello! Don`t you want to buy our new fridge?'
         },
+        {
+            name: 'Kate Kovalenko',
+            verified: true,
+            date: 'May 22, 2020',
+            avatar: 'https://assets.capitalfm.com/2018/23/lilliya-scarlett-instagram-1528814125-custom-0.png',
+            userId: 5,
+            message: 'Can u help me please?'
+        },
+        {
+            name: 'Max Gumeniuk',
+            verified: true,
+            date: 'May 21, 2020',
+            avatar: 'https://www.liberaldictionary.com/wp-content/uploads/2018/12/men-1.jpg',
+            userId: 6,
+            message: 'What?? It cant be real'
+        },
+        {
+            name: 'Oleg Kononenko',
+            verified: true,
+            date: 'May 20, 2020',
+            avatar: 'https://hdbrows.com/wp-content/uploads/2017/07/2222-300x300.jpg',
+            userId: 7,
+            message: 'You have 5 days to do this!'
+        },
+        {
+            name: 'Olga',
+            verified: true,
+            date: 'May 19, 2020',
+            avatar: 'https://i.pinimg.com/originals/07/1f/ce/071fcef5a664554b0bfa1aa761fc669e.jpg',
+            userId: 8,
+            message: 'Maybe, we can start dating?'
+        }
     ]
 };
 
@@ -46,6 +78,7 @@ const usersReducer = (state = initialState, action) => {
                     ...state.users[0].message = action.text
                 }
             }
+            break;
         default:
             return state;
     }
