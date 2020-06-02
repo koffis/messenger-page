@@ -42,13 +42,14 @@ export const sendNewMessage = (id, message) => (dispatch) => {
     );
 };
 
-export const getChakMessage = (id) => (dispatch) => {
-    messageAPI.getResponse()
-        .then(response => dispatch(sendNewMessage(id, {
-                text: response.data.value,
-                author: 2,
-                time: currentTime
-            }))).then(dispatch(getDialog(id)));
+export const getChakMessage = (id) => async (dispatch) => {
+    let response = await messageAPI.getResponse();
+    dispatch(sendNewMessage(id, {
+        text: response.data.value,
+        author: 2,
+        time: currentTime
+    }));
+    dispatch(getDialog(id));
 };
 
 export default dialogsReducer;

@@ -5,6 +5,12 @@ import s from './UserList.module.css'
 
 
 class UserList extends React.Component {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.users !== prevProps.users){
+            return this.props.users
+        }
+    }
+
     users = this.props.users;
 
     state = {

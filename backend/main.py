@@ -15,6 +15,13 @@ def get_dialogs(id:int):
             return dialog
 
 
+@app.route("/users", methods=['GET'])
+def get_users():
+    with open('users.json') as file:
+        users = json.load(file)
+        return users
+
+
 @app.route("/send", methods=['POST'])
 def send_message():
     message_json = request.get_json()

@@ -43,7 +43,9 @@
             "time": "5/25/20, 14:57"
           },
           {
-            "text": "'We are losing money!Quick!', author: 2, time: '5/25/20, 15:00'"
+            "text": "We are losing money!Quick!",
+            "author": 2,
+            "time": "5/25/20, 15:00"
           }
         ]
       }
