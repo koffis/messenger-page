@@ -4,6 +4,7 @@ import Dialog from "./Dialog";
 import {addMessage, getChakMessage, getDialog, updateMessageText} from "../../Redux/dialogs-reducer";
 import {compose} from "redux";
 import {withRouter} from "react-router";
+import {changeLastMessage} from "../../Redux/users-list-reducer";
 
 class DialogContainer extends React.Component {
 
@@ -34,6 +35,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, {getChakMessage, updateMessageText, addMessage, getDialog}),
+    connect(mapStateToProps, {changeLastMessage, getChakMessage, updateMessageText, addMessage, getDialog}),
     withRouter
 )(DialogContainer)

@@ -1,3 +1,5 @@
+const CHANGE_LAST_MESSAGE = 'CHANGE_LAST_MESSAGE';
+
 let initialState = {
     users: [
         {
@@ -36,9 +38,20 @@ let initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case CHANGE_LAST_MESSAGE:
+            if (state.users[0].userId === action.id) {
+                return {
+                    ...state,
+                    ...state.users[0].message = action.text
+                }
+            }
+        default:
+            return state;
+    }
 };
 
+export const changeLastMessage = (id, text) => ({type: CHANGE_LAST_MESSAGE, id, text});
 
 export default usersReducer;
 

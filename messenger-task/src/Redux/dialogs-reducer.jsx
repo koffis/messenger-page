@@ -1,4 +1,5 @@
 import {dialogAPI, messageAPI} from "../api/api";
+import {changeLastMessage} from "./users-list-reducer";
 
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
@@ -17,10 +18,12 @@ const dialogsReducer = (state = initialState, action) => {
                 dialog: action.payload
             };
         case ADD_MESSAGE:
+            let now = new Date();
+            let currentTime = now.getMonth()+1+'/'+now.getDate()+'/'+now.getFullYear()+', '+now.getHours()+":"+ now.getMinutes()
             let newMessage = {
                 text: state.newMessageText,
                 author: action.author,
-                time: '5/27/20, 16:10'
+                time: currentTime
             };
             return {
                 ...state,
@@ -55,7 +58,7 @@ export const getDialog = (id) => async (dispatch) =>{
 export const getChakMessage = () => async (dispatch) =>{
     let response = await messageAPI.getResponse();
     dispatch(updateMessageText(response.data.value));
-    dispatch(addMessage(2))
+    dispatch(addMessage(2));
 };
 
 export default dialogsReducer;

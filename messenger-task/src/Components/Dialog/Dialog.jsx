@@ -4,6 +4,7 @@ import DialogItem from "./DialogItem";
 import Preloader from "../common/Preloader/Preloader";
 
 const Dialog = (props) => {
+    debugger;
     if (!props.dialog) {
         return (
             <Preloader/>
