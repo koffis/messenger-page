@@ -38,10 +38,16 @@ const Dialog = (props) => {
             <div>
                 <div className={s.userInfoPlace}>
                     <img alt={'user avatar'} src={props.dialog.avatar}/>
-                    <h4>{props.dialog.sender}</h4>
+                    <p>{props.dialog.sender}</p>
+                    <div className={s.line}>
+                        <hr/>
+                    </div>
                 </div>
                 <div className={s.dialogPlace}>
                     <h4><i>You have no dialog with this user yet.</i></h4>
+                </div>
+                <div className={s.line}>
+                    <hr/>
                 </div>
                 <div className={s.messagePlace}>
                     <div className="text_wrapper">
@@ -66,12 +72,18 @@ const Dialog = (props) => {
             <div>
                 <div className={s.userInfoPlace}>
                     <img alt={'user avatar'} src={props.dialog.avatar}/>
-                    <h4>{props.dialog.sender}</h4>
+                    <p>{props.dialog.sender}</p>
+                </div>
+                <div className={s.line}>
+                    <hr/>
                 </div>
                 <div className={s.chat}>
                     <div className={s.dialogPlace}>
                         {messagesList}
                     </div>
+                </div>
+                <div className={s.bottom_line}>
+                    <hr/>
                 </div>
                 <div className={s.messagePlace}>
                     <div className="text_wrapper">

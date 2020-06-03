@@ -5,23 +5,39 @@
     padding-right: 50px;
 }
 
-.messagePlace input[type="submit"]{
-    margin-left: 50px;
-    height: 20px;
-    width: 50px;
-}
-
 .messagePlace{
-    height: 100%;
-    background-color: black;
-
-
+    border-radius: 5px;
+    height: 112px;
+    background-color: #E2E2E2;
 }
 .userInfoPlace img{
     width: 60px;
     height: 60px;
     border-radius: 50px;
     margin: 10px;
+}
+
+.line hr{
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: 0px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
+.bottom_line hr{
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    margin: 1px 3px -1px 5px;
+}
+
+.userInfoPlace p{
+    font-size: 18px;
+    margin-top: 25px;
 }
 
 .userInfoPlace{
