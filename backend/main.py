@@ -50,8 +50,6 @@ def send_message():
     message_json = request.get_json()
     sender_id = message_json["id"]
     message = message_json["message"]
-    message_text = message["text"]
-
     with open("dialogs.json") as file:
         dialogs_id = json.load(file)
     for dialog in dialogs_id["dialogs"]:
