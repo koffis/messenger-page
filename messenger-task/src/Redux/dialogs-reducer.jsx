@@ -3,7 +3,6 @@ import {getUsers, setLastMessage} from "./users-list-reducer";
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const SET_DIALOG = 'SET_DIALOG';
-
 let now = new Date();
 let currentTime = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ', ' + now.getHours() + ":" + now.getMinutes();
 let currentDate = "Jun " + now.getDate() + ", " + now.getFullYear();
@@ -21,13 +20,13 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 dialog: action.payload,
                 newMessageText: ''
+
             };
         case UPDATE_NEW_MESSAGE_TEXT:
             return {
                 ...state,
                 newMessageText: action.text
             };
-
         default:
             return state;
     }

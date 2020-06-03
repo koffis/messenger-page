@@ -1,19 +1,84 @@
-.app_wrapper{
+.app_wrapper {
     display: grid;
-    grid-template-areas:
-                'profile dialogs'
-                'users dialogs';
+    grid-template-areas: 'profile dialogs' 'users dialogs';
     grid-template-rows: 100px 1fr;
     grid-template-columns: 4fr 8fr;
+    position: fixed;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    max-width: 1024px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-height:900px;
 }
 
-.profile{
+.profile {
     grid-area: profile;
+    background-color: #e2e2e2;
+    border-right: 1px solid #a3a3a3;
 }
 
-.userList{
+.userList {
     grid-area: users;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
-.dialog{
+
+.dialog {
     grid-area: dialogs;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-button {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d5d3d3;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e3c4c4;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #000000;
+}
+
+::-webkit-scrollbar-track {
+    background: #666666;
+    border: 0px none #ffffff;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #666666;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #333333;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+

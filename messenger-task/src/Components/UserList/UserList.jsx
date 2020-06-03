@@ -32,7 +32,11 @@ class UserList extends React.Component {
         return (
             <div>
                 <div>
-                    <input type="text" onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
+                    <div className="searchbar">
+                        <input className="search_input" type="text" name="" placeholder="Search..."  onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
+                            <div className="search_icon"><i className="fas fa-search"/></div>
+                    </div>
+
                     <ul>
                         {options.map(user => <UserItem
                             key={user.userId}

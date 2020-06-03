@@ -41,18 +41,18 @@ const Dialog = (props) => {
                     <h4>{props.dialog.sender}</h4>
                 </div>
                 <div className={s.dialogPlace}>
-                    <h4><i>You have no dialog with this user yet</i></h4>
+                    <h4><i>You have no dialog with this user yet.</i></h4>
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} placeholder={'Type your message'} type="text"/>
-                    {props.newMessageText.length === 0
-                        ? <input type={'submit'} disabled/>
-                        : <input
-                            onClick={() => {
-                                addNewMessage();
-                                props.getChakMessage(props.dialog.id)
-                            }} type="submit"/>
-                    }
+                    <input value={props.newMessageText} onChange={updateNewMessageText} placeholder="Type your message"
+                           type="text"/>{props.newMessageText.length === 0
+                    ? <input type={'submit'} disabled/>
+                    : <input
+                        onClick={() => {
+                            addNewMessage();
+                            props.getChakMessage(props.dialog.id)
+                        }} type="submit"><i className="fad fa-paper-plane"/></input>
+                }
                 </div>
             </div>
         )
@@ -63,23 +63,30 @@ const Dialog = (props) => {
                     <img alt={'user avatar'} src={props.dialog.avatar}/>
                     <h4>{props.dialog.sender}</h4>
                 </div>
-                <div className={s.dialogPlace}>
-                    {messagesList}
+                <div className={s.chat}>
+                    <div className={s.dialogPlace}>
+                        {messagesList}
+                    </div>
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} placeholder={'Type your message'} type="text"/>
-                    {props.newMessageText.length === 0
-                        ? <input type={'submit'} disabled/>
-                        : <input
-                            onClick={() => {
-                                addNewMessage();
-                                props.getChakMessage(props.dialog.id)
-                            }} type="submit"/>
-                    }
+                    <div className="text_wrapper">
+                        <input className="text_input" type="text" name="" placeholder="Type your message"
+                               value={props.newMessageText} onChange={updateNewMessageText}/>
+                        <div className="text_icon">
+                            {props.newMessageText.length === 0
+                                ? <button disabled><i className="fas fa-paper-plane"/></button>
+                                : <button
+                                    onClick={() => {
+                                        addNewMessage();
+                                        props.getChakMessage(props.dialog.id)
+                                    }} type="submit"><i className="fas fa-paper-plane"/>Sand</button>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         );
     }
-
 };
+
 export default Dialog;

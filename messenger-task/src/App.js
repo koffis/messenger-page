@@ -8,6 +8,8 @@ import {connect} from "react-redux";
 import {getUsers} from "./Redux/users-list-reducer";
 import Preloader from "./Components/common/Preloader/Preloader";
 import Profile from "./Components/Profile/Profile";
+import './global.css'
+import './fa/all.css'
 
 
 class App extends React.Component {

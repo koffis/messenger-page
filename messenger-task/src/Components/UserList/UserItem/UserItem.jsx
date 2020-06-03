@@ -10,7 +10,6 @@ const UserItem = (props) => {
             return props.message
         }
     };
-
     return (
         <NavLink to={`/${props.userId}`}>
             <div className={s.users_wrapper}>
@@ -25,6 +24,7 @@ const UserItem = (props) => {
                     <p>{props.date}</p>
                 </div>
             </div>
+            <hr/>
         </NavLink>
     );
 };
