@@ -33,25 +33,30 @@ const Dialog = (props) => {
         avatar={props.dialog.avatar}
     />);
 
-    if(props.dialog.messages.length === 0){
-        return(
+    if (props.dialog.messages.length === 0) {
+        return (
             <div>
                 <div className={s.userInfoPlace}>
                     <img alt={'user avatar'} src={props.dialog.avatar}/>
                     <h4>{props.dialog.sender}</h4>
                 </div>
                 <div className={s.dialogPlace}>
-                    <h4><i>You have no dialog with this user yet.</i></h4>
+                    <h4><i>You have no dialog with this user yet</i></h4>
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/><input onClick={() => {
-                    addNewMessage();
-                    props.getChakMessage(props.dialog.id)
-                }} type="submit"/>
+                    <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/>
+                    {props.newMessageText.length === 0
+                        ? <input type={'submit'} disabled/>
+                        : <input
+                            onClick={() => {
+                                addNewMessage();
+                                props.getChakMessage(props.dialog.id)
+                            }} type="submit"/>
+                    }
                 </div>
             </div>
         )
-    }else{
+    } else {
         return (
             <div>
                 <div className={s.userInfoPlace}>
@@ -62,14 +67,19 @@ const Dialog = (props) => {
                     {messagesList}
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/><input onClick={() => {
-                    addNewMessage();
-                    props.getChakMessage(props.dialog.id)
-                }} type="submit"/>
+                    <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/>
+                    {props.newMessageText.length === 0
+                        ? <input type={'submit'} disabled/>
+                        : <input
+                            onClick={() => {
+                                addNewMessage();
+                                props.getChakMessage(props.dialog.id)
+                            }} type="submit"/>
+                    }
                 </div>
             </div>
         );
     }
-  };
 
+};
 export default Dialog;

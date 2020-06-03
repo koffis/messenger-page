@@ -1,0 +1,21 @@
+.formControl.error input,
+.formControl.error textarea
+{
+    border-bottom: 1px solid #f80038!important;
+    box-shadow: 0 1px 0 0 #f80038!important;
+}
+
+.formControl.error span{
+    color: red;
+    font-size: 13px;
+    position: fixed;
+ margin-left: -50px;
+}
+
+.form_summary_error div{
+    border: red 1px solid;
+    color: red;
+    font-size: 13px;
+    position: fixed;
+    margin-left: -50px;
+}
