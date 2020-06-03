@@ -44,7 +44,7 @@ const Dialog = (props) => {
                     <h4><i>You have no dialog with this user yet</i></h4>
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/>
+                    <input value={props.newMessageText} onChange={updateNewMessageText} placeholder={'Type your message'} type="text"/>
                     {props.newMessageText.length === 0
                         ? <input type={'submit'} disabled/>
                         : <input
@@ -67,7 +67,7 @@ const Dialog = (props) => {
                     {messagesList}
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} type="text"/>
+                    <input value={props.newMessageText} onChange={updateNewMessageText} placeholder={'Type your message'} type="text"/>
                     {props.newMessageText.length === 0
                         ? <input type={'submit'} disabled/>
                         : <input
