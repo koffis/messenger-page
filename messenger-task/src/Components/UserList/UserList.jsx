@@ -31,10 +31,6 @@ class UserList extends React.Component {
 
         return (
             <div>
-                <div className={s.yourAvatar}>
-                    <img alt={'user avatar'}
-                         src={'https://p.kindpng.com/picc/s/65-653274_workers-compensation-law-social-security-disability-user-icon.png'}/>
-                </div>
                 <div>
                     <input type="text" onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
                     <ul>
