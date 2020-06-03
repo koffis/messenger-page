@@ -3,6 +3,14 @@ import s from './UserItem.module.css'
 import {NavLink} from "react-router-dom";
 
 const UserItem = (props) => {
+    const getMessage = () =>{
+        if(props.message.length > 50){
+            return props.message.substr(0, 50) + '...'
+        }else{
+            return props.message
+        }
+    };
+
     return (
         <NavLink to={`/${props.userId}`}>
             <div className={s.users_wrapper}>
@@ -11,7 +19,7 @@ const UserItem = (props) => {
                 </div>
                 <div className={s.userInfo}>
                     <h5>{props.name}</h5>
-                    <p>{props.message}</p>
+                    <p>{getMessage()}</p>
                 </div>
                 <div className={s.userDate}>
                     <p>{props.date}</p>
