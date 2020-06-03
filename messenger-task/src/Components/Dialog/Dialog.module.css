@@ -38,6 +38,14 @@
     height: 700px;
     overflow-y: scroll;
 }
-.fas{
-    z-index: 100;
+
+
+.messageButton {
+    width:50px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
 }
+
+

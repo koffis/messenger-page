@@ -1,18 +1,17 @@
 import React from 'react';
 import {connect} from "react-redux";
 import UserItem from "./UserItem/UserItem";
-import s from './UserList.module.css'
 import {getUsers} from "../../Redux/users-list-reducer";
+import s from "./UserList.module.css"
 
 
 class UserList extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.users !== prevProps.users){
+        if (this.props.users !== prevProps.users) {
             return this.props.users;
         }
     }
-
 
     state = {
         search: []
@@ -32,11 +31,15 @@ class UserList extends React.Component {
         return (
             <div>
                 <div>
-                    <div className="searchbar">
-                        <input className="search_input" type="text" name="" placeholder="Search..."  onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
+                    <div className={s.searchPlace}>
+                        <div className="searchbar">
+                            <input className="search_input" type="text" name="" placeholder="Search..."
+                                   onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
                             <div className="search_icon"><i className="fas fa-search"/></div>
+                        </div>
+                        <hr/>
                     </div>
-
+                    <p className={s.chatHeader}>Chats</p>
                     <ul>
                         {options.map(user => <UserItem
                             key={user.userId}

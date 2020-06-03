@@ -44,15 +44,20 @@ const Dialog = (props) => {
                     <h4><i>You have no dialog with this user yet.</i></h4>
                 </div>
                 <div className={s.messagePlace}>
-                    <input value={props.newMessageText} onChange={updateNewMessageText} placeholder="Type your message"
-                           type="text"/>{props.newMessageText.length === 0
-                    ? <input type={'submit'} disabled/>
-                    : <input
-                        onClick={() => {
-                            addNewMessage();
-                            props.getChakMessage(props.dialog.id)
-                        }} type="submit"><i className="fad fa-paper-plane"/></input>
-                }
+                    <div className="text_wrapper">
+                        <input className="text_input" type="text" name="" placeholder="Type your message"
+                               value={props.newMessageText} onChange={updateNewMessageText}/>
+                        <div className="text_icon">
+                            {props.newMessageText.length === 0
+                                ? <button disabled><i className="fas fa-paper-plane"/></button>
+                                : <button
+                                    onClick={() => {
+                                        addNewMessage();
+                                        props.getChakMessage(props.dialog.id)
+                                    }} type="submit"><i className="fas fa-paper-plane"/>Sand</button>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -70,16 +75,17 @@ const Dialog = (props) => {
                 </div>
                 <div className={s.messagePlace}>
                     <div className="text_wrapper">
-                        <input className="text_input" type="text" name="" placeholder="Type your message"
+                        <input className="text_input" type="text" placeholder="Type your message"
                                value={props.newMessageText} onChange={updateNewMessageText}/>
                         <div className="text_icon">
                             {props.newMessageText.length === 0
-                                ? <button disabled><i className="fas fa-paper-plane"/></button>
+                                ? <button className={s.messageButton} disabled><i className="fas fa-paper-plane"/></button>
                                 : <button
+                                    className={s.messageButton}
                                     onClick={() => {
                                         addNewMessage();
                                         props.getChakMessage(props.dialog.id)
-                                    }} type="submit"><i className="fas fa-paper-plane"/>Sand</button>
+                                    }} type="submit"><i className="fas fa-paper-plane"/></button>
                             }
                         </div>
                     </div>
