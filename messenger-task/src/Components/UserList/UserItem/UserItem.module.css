@@ -20,8 +20,11 @@
     cursor: pointer;
     background-color: #8e8e8e;
 }
+
+
 .userAvatar{
     grid-area: 1/1/2/1;
+    position: relative;
 }
 
 .userInfo{
@@ -46,8 +49,17 @@
     font-size: 8px;
 }
 
-.userAvatar img{
+.avatar{
     width:50px;
     height: 50px;
     border-radius: 25px;
+    z-index: 1;
+}
+
+.online img{
+    position: absolute;
+    margin-top: -15px;
+    width:17px;
+    margin-left: 35px;
+    z-index: 5;
 }

@@ -3,6 +3,7 @@ import s from './Dialog.module.css'
 import DialogItem from "./DialogItem";
 import Preloader from "../common/Preloader/Preloader";
 import ScrollToBottom from 'react-scroll-to-bottom';
+import online from "../common/Images/online.png";
 
 
 const Dialog = (props) => {
@@ -39,7 +40,14 @@ const Dialog = (props) => {
         return (
             <div>
                 <div className={s.userInfoPlace}>
-                    <img alt={'user avatar'} src={props.dialog.avatar}/>
+                    <img className={s.userImage} alt={'user avatar'} src={props.dialog.avatar}/>
+                    <div className={s.userOnline}>
+                        {
+                            props.dialog.verified
+                                ? <img id={'online'} alt={'online'} src={online}/>
+                                : <div></div>
+                        }
+                    </div>
                     <p>{props.dialog.sender}</p>
                     <div className={s.line}>
                         <hr/>
@@ -59,7 +67,8 @@ const Dialog = (props) => {
                                value={props.newMessageText} onChange={updateNewMessageText}/>
                         <div className="text_icon">
                             {props.newMessageText.length === 0
-                                ? <button className={s.messageButton} disabled><i className="fas fa-paper-plane"/></button>
+                                ? <button className={s.messageButton} disabled><i className="fas fa-paper-plane"/>
+                                </button>
                                 : <button
                                     className={s.messageButton}
                                     onClick={() => {
@@ -75,40 +84,48 @@ const Dialog = (props) => {
     } else {
         return (
 
-                <div>
-                    <div className={s.userInfoPlace}>
-                        <img alt={'user avatar'} src={props.dialog.avatar}/>
-                        <p>{props.dialog.sender}</p>
+            <div>
+                <div className={s.userInfoPlace}>
+                    <img className={s.userImage} alt={'user avatar'} src={props.dialog.avatar}/>
+                    <div className={s.userOnline}>
+                        {
+                            props.dialog.verified
+                                ? <img id={'online'} alt={'online'} src={online}/>
+                                : <div></div>
+                        }
                     </div>
+                    <p>{props.dialog.sender}</p>
                     <div className={s.line}>
                         <hr/>
                     </div>
-                    <ScrollToBottom className={s.chat}>
-                        <div className={s.dialogPlace}>
-                            {messagesList}
-                        </div>
-                    </ScrollToBottom>
-                    <div className={s.bottom_line}>
-                        <hr/>
+                </div>
+                <ScrollToBottom className={s.chat}>
+                    <div className={s.dialogPlace}>
+                        {messagesList}
                     </div>
-                    <div className={s.messagePlace}>
-                        <div className="text_wrapper">
-                            <input className="text_input" type="text" placeholder="Type your message"
-                                   value={props.newMessageText} onChange={updateNewMessageText}/>
-                            <div className="text_icon">
-                                {props.newMessageText.length === 0
-                                    ? <button className={s.messageButton} disabled><i className="fas fa-paper-plane"/></button>
-                                    : <button
-                                        className={s.messageButton}
-                                        onClick={() => {
-                                            addNewMessage();
-                                            props.getChakMessage(props.dialog.id)
-                                        }} type="submit"><i className="fas fa-paper-plane"/></button>
-                                }
-                            </div>
+                </ScrollToBottom>
+                <div className={s.bottom_line}>
+                    <hr/>
+                </div>
+                <div className={s.messagePlace}>
+                    <div className="text_wrapper">
+                        <input className="text_input" type="text" placeholder="Type your message"
+                               value={props.newMessageText} onChange={updateNewMessageText}/>
+                        <div className="text_icon">
+                            {props.newMessageText.length === 0
+                                ? <button className={s.messageButton} disabled><i className="fas fa-paper-plane"/>
+                                </button>
+                                : <button
+                                    className={s.messageButton}
+                                    onClick={() => {
+                                        addNewMessage();
+                                        props.getChakMessage(props.dialog.id)
+                                    }} type="submit"><i className="fas fa-paper-plane"/></button>
+                            }
                         </div>
                     </div>
                 </div>
+            </div>
         );
     }
 };
