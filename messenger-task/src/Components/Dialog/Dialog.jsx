@@ -45,7 +45,9 @@ const Dialog = (props) => {
                     </div>
                 </div>
                 <div className={s.chat}>
-                    <h4><i>You have no dialog with this user yet.</i></h4>
+                    <div className={s.epmtyChat}>
+                        <h>No messages here yet...</h>
+                    </div>
                 </div>
                 <div className={s.line}>
                     <hr/>
@@ -62,7 +64,7 @@ const Dialog = (props) => {
                                     onClick={() => {
                                         addNewMessage();
                                         props.getChakMessage(props.dialog.id)
-                                    }} type="submit"><i className="fas fa-paper-plane"/>Sand</button>
+                                    }} type="submit"><i className="fas fa-paper-plane"/></button>
                             }
                         </div>
                     </div>
