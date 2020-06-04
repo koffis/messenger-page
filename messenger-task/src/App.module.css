@@ -15,7 +15,8 @@
     max-width: 1024px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-height:900px;
+    max-height:calc(100% - 20px);
+    min-height:300px;
 }
 
 .profile {
@@ -43,7 +44,6 @@ a{
 ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
-
 }
 
 ::-webkit-scrollbar-button {
@@ -70,6 +70,7 @@ a{
     border: 0px none #fef9ff;
     border-radius: 2px;
     margin-top: -5px;
+
 }
 
 ::-webkit-scrollbar-track:hover {

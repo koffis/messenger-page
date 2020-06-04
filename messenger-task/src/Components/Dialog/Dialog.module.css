@@ -1,6 +1,6 @@
 .messagePlace{
-    border-radius: 5px;
-    height: 112px;
+    border-bottom-right-radius: 5px;
+    height: 120px;
     background-color: #E2E2E2;
 }
 .userInfoPlace img{
@@ -25,7 +25,7 @@
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-    margin: 1px 3px -1px 5px;
+    margin: 0 0 -1px -1px;
 }
 
 .userInfoPlace p{
@@ -43,9 +43,10 @@
     justify-content: space-around;
     background-color: #f5f5f5;
 }
+
 .chat {
     background-color: #F5F5F5;
-    height: 700px;
+    height: calc(100vh - 220px);
     overflow-y: scroll;
 }
 
@@ -62,21 +63,21 @@
     text-align: center;
     justify-content: center;
     margin-top: 50%;
+    color: #6b6b75;
+    height: 1000px;
 }
 
 .defaultWindow p {
     font-size: 20px;
-    color: #6b6b75;
 }
 
 .defaultWindow i {
-    font-size: 50px;
-    color: #6b6b75;
+    font-size: 40px;
 }
 
 .emptyChat{
     text-align: center;
     justify-content: center;
     margin-top: 50%;
-    color: #6b6b75;;
+    color: #6b6b75;
 }
