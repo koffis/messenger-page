@@ -51,7 +51,6 @@
 
 
 .messageButton {
-
     width:50px;
     height: 40px;
     border: none;
@@ -66,15 +65,18 @@
 }
 
 .defaultWindow p {
-    font-size: 40px;
+    font-size: 20px;
+    color: #6b6b75;
 }
 
 .defaultWindow i {
-    font-size: 70px;
+    font-size: 50px;
+    color: #6b6b75;
 }
 
-.epmtyChat{
+.emptyChat{
     text-align: center;
     justify-content: center;
     margin-top: 50%;
+    color: #6b6b75;;
 }
