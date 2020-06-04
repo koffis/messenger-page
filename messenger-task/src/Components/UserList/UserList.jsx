@@ -34,7 +34,8 @@ class UserList extends React.Component {
                     <div className={s.searchPlace}>
                         <div className="searchbar">
                             <input className="search_input" type="text" name="" placeholder="Search..."
-                                   onChange={(e) => this.setState({search: e.target.value.split(' ')})}/>
+                                   onChange={(e) =>
+                                       this.setState({search: e.target.value.split(' ')})}/>
                             <div className="search_icon"><i className="fas fa-search"/></div>
                         </div>
                         <hr/>

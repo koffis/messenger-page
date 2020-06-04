@@ -57,11 +57,11 @@ a{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #79b6e3;
+    background: #6b6b75;
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: #1167bf;
+    background: #474747;
 }
 
 ::-webkit-scrollbar-track {

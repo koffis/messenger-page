@@ -3,7 +3,8 @@ import s from './DialogItem.module.css'
 
 const DialogItem = (props) => {
     if (props.author === 1) {
-        return (<div className={s.message_wrapper}>
+        return (
+            <div className={s.message_wrapper}>
                 <div className={s.myMessage}>
                     <p>{props.text}</p>
                 </div>
@@ -12,7 +13,6 @@ const DialogItem = (props) => {
                     <p>{props.time}</p>
                 </div>
             </div>
-
         )
     } else {
         return (

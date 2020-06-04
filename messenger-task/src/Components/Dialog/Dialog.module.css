@@ -1,4 +1,5 @@
 
+
 .messagePlace input[type="text"]{
     width: 90%;
     height: 40px;
@@ -51,6 +52,7 @@
     background-color: #f5f5f5;
 }
 .chat {
+    background-color: #F5F5F5;
     height: 700px;
     overflow-y: scroll;
 }

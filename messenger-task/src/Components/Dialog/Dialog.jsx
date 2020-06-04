@@ -3,6 +3,7 @@ import s from './Dialog.module.css'
 import DialogItem from "./DialogItem";
 import Preloader from "../common/Preloader/Preloader";
 
+
 const Dialog = (props) => {
     if (!props.dialog) {
         return (
@@ -43,7 +44,7 @@ const Dialog = (props) => {
                         <hr/>
                     </div>
                 </div>
-                <div className={s.dialogPlace}>
+                <div className={s.chat}>
                     <h4><i>You have no dialog with this user yet.</i></h4>
                 </div>
                 <div className={s.line}>
@@ -55,8 +56,9 @@ const Dialog = (props) => {
                                value={props.newMessageText} onChange={updateNewMessageText}/>
                         <div className="text_icon">
                             {props.newMessageText.length === 0
-                                ? <button disabled><i className="fas fa-paper-plane"/></button>
+                                ? <button className={s.messageButton} disabled><i className="fas fa-paper-plane"/></button>
                                 : <button
+                                    className={s.messageButton}
                                     onClick={() => {
                                         addNewMessage();
                                         props.getChakMessage(props.dialog.id)
