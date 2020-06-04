@@ -81,7 +81,7 @@ const Dialog = (props) => {
                 <div className={s.line}>
                     <hr/>
                 </div>
-                <div className={s.chat}>
+                <div id={'scroll'} className={s.chat}>
                     <div className={s.dialogPlace}>
                         {messagesList}
                     </div>
