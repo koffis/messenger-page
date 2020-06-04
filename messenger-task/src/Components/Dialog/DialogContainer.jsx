@@ -4,7 +4,6 @@ import Dialog from "./Dialog";
 import {getChakMessage, getDialog, sendNewMessage, updateMessageText} from "../../Redux/dialogs-reducer";
 import {compose} from "redux";
 import {withRouter} from "react-router";
-import {setLastMessage} from "../../Redux/users-list-reducer";
 
 class DialogContainer extends React.Component {
 

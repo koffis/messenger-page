@@ -1,9 +1,25 @@
 .users_wrapper{
     display: grid;
     grid-template-columns: 1fr 9fr 2fr;
-    grid-template-rows: 50px 50px;
+    grid-template-rows: 50px 10px;
+    margin-left: -25px;
+    margin-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+    transition: all ease 0.25s;
 }
 
+
+.users_wrapper:hover{
+    cursor: pointer;
+    background-color: #b3b3b3;
+    border-radius: 0.25rem;
+}
+.users_wrapper:active{
+    cursor: pointer;
+    background-color: #8e8e8e;
+}
 .userAvatar{
     grid-area: 1/1/2/1;
 }
@@ -11,9 +27,23 @@
 .userInfo{
     grid-area: 1/2/2/2;
 }
+.userInfo h5 {
+    margin-top: 0;
+    margin-left: 5px;
+    font-size: 14px;
+    color: #262323;
+    font-weight:300;
+}
+.userInfo p {
+    margin-top: -19px;
+    margin-left: 6px;
+    font-size: 12px;
+    color: #636363;
+}
 
 .userDate{
     grid-area: 1/3/1/3;
+    font-size: 8px;
 }
 
 .userAvatar img{

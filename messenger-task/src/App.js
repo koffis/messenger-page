@@ -7,6 +7,9 @@ import DialogContainer from "./Components/Dialog/DialogContainer";
 import {connect} from "react-redux";
 import {getUsers} from "./Redux/users-list-reducer";
 import Preloader from "./Components/common/Preloader/Preloader";
+import Profile from "./Components/Profile/Profile";
+import './global.css'
+import './fa/all.css'
 
 
 class App extends React.Component {
@@ -22,12 +25,15 @@ class App extends React.Component {
         }
         return (
             <div className={s.app_wrapper}>
+                <div className={s.profile}>
+                    <Profile/>
+                </div>
                 <div className={s.userList}>
                     <UserList/>
                 </div>
                 <div className={s.dialog}>
-                    <Route path={'/'} render={() => <DefaultWindow/>}/>
-                    <Route exact path={'/:id'} render={() => <DialogContainer/>}/>
+                    <Route exact path={'/'} render={() => <DefaultWindow/>}/>
+                    <Route path={'/:id'} render={() => <DialogContainer/>}/>
                 </div>
             </div>
         );

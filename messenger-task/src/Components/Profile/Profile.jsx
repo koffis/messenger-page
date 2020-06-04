@@ -1,17 +1,16 @@
 import React from "react";
+import s from "../UserList/UserList.module.css";
 
 const Profile = (props) =>{
     return(
         <div>
-            <div>
-                <img alt={'user'} src={props.avatar}/>
-                <h4>{props.name}</h4>
-            </div>
-            <div>
-                Status:{props.status}<br/>
-                Age:{props.age}<br/>
-                Location:{props.location}<br/>
-                Work:{props.work}
+            <div className={s.yourAvatar}>
+                <img alt={'user avatar'}
+                     src={'https://p.kindpng.com/picc/s/65-653274_workers-compensation-law-social-security-disability-user-icon.png'}/>
+                <p>Yaroslav</p>
+                <div>
+
+                </div>
             </div>
         </div>
     )

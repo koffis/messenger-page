@@ -1,9 +1,11 @@
 from flask import Flask, request
 import json
 from flask_cors import CORS
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 my_cor = CORS(app, resources={r"/*": {"origins": "*"}})
+bcrypt = Bcrypt(app)
 
 
 @app.route("/<int:id>", methods=['GET'])

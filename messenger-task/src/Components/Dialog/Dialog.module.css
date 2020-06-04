@@ -1,32 +1,83 @@
-
-.messagePlace input[type="text"]{
-    width: 90%;
-    height: 40px;
-    padding-right: 50px;
-}
-
-.messagePlace input[type="submit"]{
-    margin-left: -50px;
-    height: 20px;
-    width: 50px;
-}
-
 .messagePlace{
-    margin-top: 100px;
+    border-bottom-right-radius: 5px;
+    height: 120px;
+    background-color: #E2E2E2;
+}
+.userInfoPlace img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    margin: 10px;
 }
 
-.userInfoPlace img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+.line hr{
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-left: 0px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
+.bottom_line hr{
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    margin: 0 0 -1px -1px;
+}
+
+.userInfoPlace p{
+    font-size: 18px;
+    margin-top: 28px;
 }
 
 .userInfoPlace{
     display: flex;
+    background-color: #e2e2e2;
 }
 .dialogPlace{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 500px;
+    background-color: #f5f5f5;
+}
+
+.chat {
+    background-color: #F5F5F5;
+    height: calc(100vh - 220px);
+    overflow-y: scroll;
+}
+
+
+.messageButton {
+    width:50px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.defaultWindow{
+    text-align: center;
+    justify-content: center;
+    margin-top: 50%;
+    color: #6b6b75;
+    height: 1000px;
+}
+
+.defaultWindow p {
+    font-size: 20px;
+}
+
+.defaultWindow i {
+    font-size: 40px;
+}
+
+.emptyChat{
+    text-align: center;
+    justify-content: center;
+    margin-top: 50%;
+    color: #6b6b75;
 }
