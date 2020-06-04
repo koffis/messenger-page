@@ -168,6 +168,8 @@
 
 .fa-search:before {
   content: "\f002"; }
+.fa-comments:before {
+  content: "\f086"; }
 
 .fad.fa-yin-yang:after {
   content: "\10f6ad"; }
